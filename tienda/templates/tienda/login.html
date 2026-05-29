@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | JADE & GOWK</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow p-4 border-0">
+                    <div class="text-center mb-4">
+                        <h2 class="font-weight-bold">JADE & GOWK</h2>
+                        <p class="text-muted">Ingresa a tu cuenta para comprar</p>
+                    </div>
+
+                    <!-- Mensajes de error por credenciales incorrectas -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger p-2 small text-center" role="alert">
+                            Usuario o contraseña incorrectos. Inténtalo de nuevo.
+                        </div>
+                    {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label class="font-weight-bold">Nombre de usuario</label>
+                            <input type="text" name="username" class="form-control" placeholder="Tu usuario" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">Contraseña</label>
+                            <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark btn-block font-weight-bold py-2 mt-4">INICIAR SESIÓN</button>
+                    </form>
+
+                    <hr>
+                    <div class="text-center">
+                        <p class="mb-0 text-muted">¿Eres nuevo en JADE & GOWK?</p>
+                        <a href="{% url 'registrar' %}" class="text-dark font-weight-bold">Regístrate aquí</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
